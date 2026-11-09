@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load-Indicating E-Commerce Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">LS</div>
+            <div>
+                <h2>LoadSignal</h2>
+                <small>LOAD-INDICATING SIMULATOR</small>
+            </div>
+        </div>
+
+        <p class="side-label">WORKSPACE</p>
+
+        <nav id="navigation">
+            <button class="nav-item active" data-page="Overview">▦ <span>Overview</span></button>
+            <button class="nav-item" data-page="E-Commerce">▣ <span>E-Commerce</span></button>
+            <button class="nav-item" data-page="Load Monitoring">⌁ <span>Load Monitoring</span></button>
+            <button class="nav-item" data-page="Auto Scaling">⇧ <span>Auto Scaling</span></button>
+            <button class="nav-item" data-page="CloudWatch">◉ <span>CloudWatch</span></button>
+            <button class="nav-item" data-page="IoT Simulator">◈ <span>IoT Simulator</span></button>
+            <button class="nav-item" data-page="MQTT Messages">▤ <span>MQTT Messages</span></button>
+            <button class="nav-item" data-page="Project Information">ⓘ <span>Project Information</span></button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="simulation-status">
+                <span class="green-dot"></span>
+                <div>
+                    <strong>Simulation mode</strong>
+                    <small>Demo data active</small>
+                </div>
+            </div>
+            <div class="profile">
+                <div class="avatar">PD</div>
+                <div>
+                    <strong>Project Demo</strong>
+                    <small>Load-Indicating Simulator</small>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main">
+
+        <header class="topbar">
+            <div class="breadcrumb">Workspace <span>›</span> <strong id="breadcrumb">Overview</strong></div>
+            <div class="environment">
+                <span class="green-dot"></span>
+                Demo environment
+            </div>
+        </header>
+
+        <div class="content">
+
+            <section class="page-heading">
+                <div>
+                    <div class="eyebrow">MONDAY, NOVEMBER 9, 2026 <span>•</span> DEMO ENVIRONMENT</div>
+                    <h1 id="pageTitle">System overview</h1>
+                    <p>A live view of your simulated e-commerce workload and infrastructure.</p>
+                </div>
+                <button class="outline-button" id="openSimulator">⊞ Open simulator</button>
+            </section>
+
+            <section class="traffic-banner">
+                <div class="traffic-left">
+                    <div class="traffic-icon">⌁</div>
+                    <div>
+                        <small>CURRENT TRAFFIC LEVEL</small>
+                        <div class="traffic-value">
+                            <strong id="trafficLevel">MEDIUM</strong>
+                            <span id="trafficBadge" class="badge medium">MEDIUM</span>
+                        </div>
+                        <p id="trafficDescription">Moderate incoming requests detected.</p>
+                    </div>
+                </div>
+
+                <div class="traffic-right">
+                    <div class="traffic-actions">
+                        <button class="primary-button" id="startBtn">▶ Start 5-Minute Live Demo</button>
+                        <button class="outline-button" id="stopBtn">Ⅱ Stop</button>
+                        <button class="outline-button" id="resetBtn">↻ Reset</button>
+                    </div>
+                    <small id="runStatus">● DEMO READY</small>
+                </div>
+            </section>
+
+            <div class="alert-banner" id="alertBanner">
+                <strong>⚠ MEDIUM TRAFFIC · MONITOR</strong>
+                <p>Moderate incoming requests detected. Continue monitoring the demo workload.</p>
+            </div>
+
+            <section class="kpi-grid">
+                <article class="kpi-card">
+                    <div class="kpi-heading">
+                        <span>Incoming requests / sec</span>
+                        <span class="kpi-icon blue">↓</span>
+                    </div>
+                    <strong class="kpi-value" id="requests">44</strong>
+                    <small>Requests per second</small>
+                </article>
+
+                <article class="kpi-card">
+                    <div class="kpi-heading">
+                        <span>Total requests received</span>
+                        <span class="kpi-icon purple">▣</span>
+                    </div>
+                    <strong class="kpi-value" id="totalRequests">0</strong>
+                    <small>During this session</small>
+                </article>
+
+                <article class="kpi-card">
+                    <div class="kpi-heading">
+                        <span>CPU utilization</span>
+                        <span class="kpi-icon blue">◉</span>
+                    </div>
+                    <strong class="kpi-value" id="cpu">38<span>%</span></strong>
+                    <small>Simulated instance metric</small>
+                </article>
+
+                <article class="kpi-card">
+                    <div class="kpi-heading">
+                        <span>Network I/O</span>
+                        <span class="kpi-icon teal">↗</span>
+                    </div>
+                    <strong class="kpi-value" id="network">3.4 <span>MB/s</span></strong>
+                    <small>Demo network activity</small>
+                </article>
+            </section>
+
+            <section class="chart-section">
+                <div class="chart-heading">
+                    <div>
+                        <h3>Live traffic and performance</h3>
+                        <p>Rolling view · latest 30 samples · generated demo data</p>
+                    </div>
+                    <span class="live-label"><span class="green-dot"></span> Simulated live data</span>
+                </div>
+
+                <div class="chart-legend">
+                    <span><i class="legend-dot low"></i> LOW</span>
+                    <span><i class="legend-dot medium-dot"></i> MEDIUM</span>
+                    <span><i class="legend-dot high"></i> HIGH</span>
+                    <span><i class="legend-dot sample"></i> SAMPLES</span>
+                </div>
+
+                <div class="chart-wrap">
+                    <canvas id="trafficChart" aria-label="Traffic samples chart"></canvas>
+                </div>
+            </section>
+
+            <section class="bottom-grid">
+                <article class="info-card">
+                    <div class="card-heading">
+                        <h3>Virtual servo indicator</h3>
+                        <span class="status-pill">SIMULATOR</span>
+                    </div>
+                    <div class="servo-display">
+                        <div class="servo-circle">
+                            <span id="servoAngle">90°</span>
+                            <small>SERVO ANGLE</small>
+                        </div>
+                        <div>
+                            <strong id="servoState">MEDIUM LOAD</strong>
+                            <p>LOW: 0° · MEDIUM: 90° · HIGH: 180°</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-heading">
+                        <h3>System activity</h3>
+                        <span class="status-pill">SESSION</span>
+                    </div>
+                    <div class="activity-row">
+                        <span class="green-dot"></span>
+                        <div><strong id="activityText">Demo initialized</strong><small id="activityTime">Waiting for demo to start</small></div>
+                    </div>
+                    <div class="activity-row">
+                        <span class="blue-dot"></span>
+                        <div><strong>Monitoring interface ready</strong><small>Dashboard initialized</small></div>
+                    </div>
+                </article>
+            </section>
+
+            <footer>
+                Load-Indicating E-Commerce Simulator
+                <span>Demo dashboard · Simulated metrics</span>
+            </footer>
+
+        </div>
+    </main>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
